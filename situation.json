@@ -1,0 +1,30 @@
+{
+    "ParticleAutoGeneration":false,
+    "NumberOfParticles":1,
+    "Particles":[
+        {
+            "Color":"FF0000",
+            "LocationX":50,
+            "LocationY":100,
+            "HorizontalV":1,
+            "VerticalV":0
+        },
+        {
+            "Color":"00FF00",
+            "LocationX":150,
+            "LocationY":50,
+            "HorizontalV":-1,
+            "VerticalV":1
+        },
+        {
+            "Color":"0000FF",
+            "LocationX":100,
+            "LocationY":200,
+            "HorizontalV":0,
+            "VerticalV":-2
+        }
+    ],
+
+    "Gravity":false,
+    "refresh":10
+}
