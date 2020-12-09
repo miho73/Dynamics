@@ -1,6 +1,6 @@
 {
-    "ParticleAutoGeneration":false,
-    "NumberOfParticles":1,
+    "ParticleAutoGeneration":true,
+    "NumberOfParticles":5000,
     "Particles":[
         {
             "Color":"FF0000",
@@ -19,7 +19,7 @@
         {
             "Color":"0000FF",
             "LocationX":100,
-            "LocationY":200,
+            "LocationY":250,
             "HorizontalV":0,
             "VerticalV":-2
         }

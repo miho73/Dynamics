@@ -9,15 +9,16 @@ import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Random;
 import java.util.Vector;
 
 public class Chamber extends JPanel {
     private Dimension screenSize = new Dimension(500, 500);
-    public Vector<Particle> particles = new Vector<Particle>();
-    public Vector<Particle> AddQueue = new Vector<Particle>();
+    public Vector<Particle> particles = new Vector<>();
+    public Vector<Particle> AddQueue = new Vector<>();
     public int prevX = -1, prevY = -1;
     private final String SETTING_FILE_PATH = "D:/hyunc/Java/Physics/situation.json";
     private JSONArray manualParticle = null;
@@ -54,8 +55,8 @@ public class Chamber extends JPanel {
                 );
                 particle.color = Color.white;
                 particle.id = i;
-                particle.HorizontalV = new Random().nextInt(50)-10;
-                particle.VerticalV = new Random().nextInt(50)-10;
+                particle.HorizontalV = new Random().nextInt(20)-10;
+                particle.VerticalV = new Random().nextInt(20)-10;
                 particles.add(particle);
             }
         }
@@ -113,9 +114,7 @@ public class Chamber extends JPanel {
                     repaint();
 
                     if(!AddQueue.isEmpty()) {
-                        for (Particle particle : AddQueue) {
-                            particles.add(particle);
-                        }
+                        particles.addAll(AddQueue);
                         AddQueue.clear();
                         UpdateParticlesNumber();
                     }
@@ -141,9 +140,7 @@ public class Chamber extends JPanel {
                     Thread.sleep(RefreshTime);
                 }
             }
-            catch (InterruptedException e) {
-                return;
-            }
+            catch (InterruptedException e) {}
         }
     }
 
@@ -158,9 +155,7 @@ public class Chamber extends JPanel {
     public void UpdateBasic() {
         repaint();
         if(!AddQueue.isEmpty()) {
-            for (Particle particle : AddQueue) {
-                particles.add(particle);
-            }
+            particles.addAll(AddQueue);
             AddQueue.clear();
             UpdateParticlesNumber();
         }

@@ -1,28 +1,26 @@
 package com.gihhub.miho73.physics.main;
 
 import com.gihhub.miho73.physics.physics.Particle;
-import org.json.simple.parser.ParseException;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Main extends JFrame {
     public static Main me;
 
-    private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    private Dimension ChamberSize = new Dimension(500, 500);
+    private final Dimension ChamberSize = new Dimension(500, 500);
 
     public JLabel particles = new JLabel();
     public JLabel locationd = new JLabel("Enter the ID");
     public JLabel velocityd = new JLabel("Enter the ID");
-    private JTextField vx = new JTextField(), vy = new JTextField();
-    private JTextField x = new JTextField(), y = new JTextField();
+    private final JTextField vx = new JTextField();
+    private final JTextField vy = new JTextField();
+    private final JTextField x = new JTextField();
+    private final JTextField y = new JTextField();
 
     public static Chamber chamber;
     public Main()  {
@@ -82,19 +80,16 @@ public class Main extends JFrame {
         add.setFont(new Font("Segoe Print", Font.BOLD, 20));
         add.setSize(205,27);
         add.setLocation(550, 120);
-        add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Particle particle = new Particle();
-                particle.VerticalV = Double.parseDouble(vy.getText());
-                particle.HorizontalV = Double.parseDouble(vx.getText());
-                particle.id = chamber.particles.size()+1;
-                particle.setLocation(
-                        Integer.parseInt(x.getText()),
-                        Integer.parseInt(y.getText())
-                );
-                chamber.AddQueue.add(particle);
-            }
+        add.addActionListener(e -> {
+            Particle particle = new Particle();
+            particle.VerticalV = Double.parseDouble(vy.getText());
+            particle.HorizontalV = Double.parseDouble(vx.getText());
+            particle.id = chamber.particles.size()+1;
+            particle.setLocation(
+                    Integer.parseInt(x.getText()),
+                    Integer.parseInt(y.getText())
+            );
+            chamber.AddQueue.add(particle);
         });
         add.setBackground(Color.white);
         add(add);
@@ -190,6 +185,23 @@ public class Main extends JFrame {
                     command.setText("Update Data");
                     chamber.UpdateBasic();
                 }
+                else if(e.getKeyCode() == KeyEvent.VK_R) {
+                    try {
+                        remove(chamber);
+                        Chamber chamberx = new Chamber();
+                        chamberx.setLocation(0,0);
+                        chamberx.setSize(ChamberSize);
+                        chamberx.setBackground(Color.black);
+                        add(chamberx);
+                        chamberx.UpdateBasic();
+                        chamber = chamberx;
+                        chamberx.UpdateParticlesNumber();
+                        command.setText("Reloaded");
+                    }
+                    catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
             }
             @Override
             public void keyReleased(KeyEvent e) { }
@@ -222,7 +234,7 @@ public class Main extends JFrame {
         }
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         me = new Main();
         chamber.UpdateParticlesNumber();
     }
