@@ -1,7 +1,7 @@
-package com.gihhub.miho73.physics.main;
+package com.github.miho73.physics.main;
 
-import com.gihhub.miho73.physics.physics.Particle;
-import com.gihhub.miho73.physics.physics.Physics;
+import com.github.miho73.physics.physics.Particle;
+import com.github.miho73.physics.physics.Physics;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;

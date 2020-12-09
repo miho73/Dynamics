@@ -1,4 +1,4 @@
-package com.gihhub.miho73.physics.physics;
+package com.github.miho73.physics.physics;
 
 import java.awt.*;
 

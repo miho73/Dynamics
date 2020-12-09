@@ -1,6 +1,6 @@
-package com.gihhub.miho73.physics.main;
+package com.github.miho73.physics.main;
 
-import com.gihhub.miho73.physics.physics.Particle;
+import com.github.miho73.physics.physics.Particle;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
