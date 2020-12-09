@@ -27,7 +27,7 @@ public class Main extends JFrame {
         setLayout(null);
 
         try {
-            chamber = new Chamber();
+            chamber = new Chamber(InitialFile);
             chamber.setLocation(0,0);
             chamber.setSize(ChamberSize);
             chamber.setBackground(Color.black);
@@ -188,7 +188,7 @@ public class Main extends JFrame {
                 else if(e.getKeyCode() == KeyEvent.VK_R) {
                     try {
                         remove(chamber);
-                        Chamber chamberx = new Chamber();
+                        Chamber chamberx = new Chamber(InitialFile);
                         chamberx.setLocation(0,0);
                         chamberx.setSize(ChamberSize);
                         chamberx.setBackground(Color.black);
@@ -234,7 +234,13 @@ public class Main extends JFrame {
         }
     }
 
+    private static String InitialFile;
     public static void main(String[] args) {
+        if(args.length < 1) {
+            System.out.println("Error: no initial state file found.");
+            return;
+        }
+        InitialFile = args[0];
         me = new Main();
         chamber.UpdateParticlesNumber();
     }

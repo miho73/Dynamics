@@ -20,7 +20,7 @@ public class Chamber extends JPanel {
     public Vector<Particle> particles = new Vector<>();
     public Vector<Particle> AddQueue = new Vector<>();
     public int prevX = -1, prevY = -1;
-    private final String SETTING_FILE_PATH = "D:/hyunc/Java/Physics/situation.json";
+    public String SETTING_FILE_PATH;
     private JSONArray manualParticle = null;
     public int TraceId = -1;
 
@@ -44,7 +44,8 @@ public class Chamber extends JPanel {
         }
     }
 
-    public Chamber() throws IOException, ParseException {
+    public Chamber(String initFile) throws IOException, ParseException {
+        SETTING_FILE_PATH = initFile;
         LoadProperties();
         if(AutoParticleGen) {
             for (int i=0; i<NumberOfParticles; i++) {
