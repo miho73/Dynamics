@@ -9,6 +9,7 @@
 > 2. `NumberOfParticles`은 자동생성할 입자의 갯수를 지정합니다. `ParticleAutoGeneration`의 값이 `true`인 경우에만 적용됩니다.
 > 3. `Particles`는 초기 입자들의 상태를 나타냅니다. `ParticleAutoGeneration`의 값이 `false`인 경우에만 적용됩니다. JSON Array꼴이며 각 원소는 다음과 같이 구성되어있는 JSON Object입니다.
 > > 3.1. `Color`는 입자의 색을 지정합니다. RBG 16진수 값입니다.
+> >
 > > 3.2. `LocationX`: 입자의 최초 x좌표 위치입니다.
 > >
 > > 3.3. `LocationY`: 입자의 최초 y좌표 위치입니다.
